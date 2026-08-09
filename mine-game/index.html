@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deep Rubble — Natura Mines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <h1>DEEP RUBBLE <span>— Natura mines</span></h1>
+    <div class="topbar-actions">
+      <button id="atlas-open" class="btn btn--ghost">index</button>
+      <button id="debug-toggle" class="btn btn--ghost">debug</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="hud">
+      <div class="hud-block">
+        <span class="label">pickaxe</span>
+        <span id="hud-pickaxe" class="value"></span>
+        <span id="hud-pattern" class="sub"></span>
+      </div>
+      <div class="hud-block">
+        <span class="label">wallet</span>
+        <span id="hud-money" class="value mono"></span>
+      </div>
+      <div class="hud-block">
+        <span class="label">current stratum</span>
+        <span id="hud-layer" class="value"></span>
+        <span id="hud-depth" class="sub mono"></span>
+      </div>
+      <div class="hud-block">
+        <span class="label">luck</span>
+        <span id="hud-luck" class="value mono"></span>
+      </div>
+      <div class="hud-block">
+        <span class="label">blocks (session)</span>
+        <span id="hud-session" class="value mono"></span>
+      </div>
+      <div class="hud-block">
+        <span class="label">blocks (lifetime)</span>
+        <span id="hud-lifetime" class="value mono"></span>
+      </div>
+      <div class="hud-block">
+        <span class="label">auto miner</span>
+        <span id="hud-auto" class="sub mono"></span>
+      </div>
+      <span class="label hud-section-label">operations</span>
+      <div class="hud-actions">
+        <button class="btn operations-launch" data-panel="operations">open operations</button>
+      </div>
+    </section>
+
+    <section class="mine-wrap">
+      <div class="mine-stage-head">
+        <div><span class="label">active quarry</span><strong id="stage-layer"></strong></div>
+        <div class="stage-tool"><span id="stage-pickaxe"></span><small id="stage-pattern"></small></div>
+      </div>
+      <div class="mine-canvas-shell">
+        <canvas id="mine-canvas"></canvas>
+        <div id="toast-feed" class="toast-feed"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<dialog id="workshop-dialog" class="workshop-dialog" aria-labelledby="workshop-title">
+  <div class="dialog-head">
+    <div>
+      <span class="label">Natura operations</span>
+      <h2 id="workshop-title"></h2>
+    </div>
+    <button id="workshop-close" class="icon-btn" aria-label="Close workshop">x</button>
+  </div>
+  <div id="workshop-content" class="workshop-content"></div>
+</dialog>
+
+<dialog id="atlas-dialog" class="atlas-dialog" aria-labelledby="ore-log-layer">
+  <div class="dialog-head atlas-dialog-head">
+    <div>
+      <span class="label">Natura index</span>
+      <h2 id="ore-log-layer">ore log</h2>
+      <span id="ore-log-depth" class="sub mono"></span>
+    </div>
+    <div class="atlas-dialog-actions">
+      <div class="atlas-nav">
+        <button id="ore-log-prev" class="icon-btn" aria-label="View previous layer">&larr;</button>
+        <span id="ore-log-progress" class="sub mono"></span>
+        <button id="ore-log-next" class="icon-btn" aria-label="View next layer">&rarr;</button>
+      </div>
+      <button id="atlas-close" class="icon-btn" aria-label="Close index">x</button>
+    </div>
+  </div>
+  <div id="ore-log" class="ore-log"></div>
+</dialog>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
