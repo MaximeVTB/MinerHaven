@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deep Rubble — Natura Mines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="css/style.css?v=20260827-9" />
+</head>
+<body>
+<div class="app">
+  <section id="menu-scene" class="game-scene">
+    <header class="topbar">
+      <h1>DEEP RUBBLE <span>— Natura mines</span></h1>
+      <div class="topbar-actions">
+        <button id="atlas-open" class="btn btn--ghost">index</button>
+        <button id="debug-toggle" class="btn btn--ghost">debug</button>
+        <button id="fullscreen-menu" class="btn btn--ghost">fullscreen</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="hud">
+        <div class="hud-block">
+          <span class="label">pickaxe</span>
+          <span id="hud-pickaxe" class="value"></span>
+          <span id="hud-pattern" class="sub"></span>
+        </div>
+        <div class="hud-block">
+          <span class="label">wallet</span>
+          <span id="hud-money" class="value mono"></span>
+        </div>
+        <div class="hud-block">
+          <span class="label">current stratum</span>
+          <span id="hud-layer" class="value"></span>
+          <span id="hud-depth" class="sub mono"></span>
+        </div>
+        <div class="hud-block">
+          <span class="label">luck</span>
+          <span id="hud-luck" class="value mono"></span>
+        </div>
+        <div class="hud-block">
+          <span class="label">blocks (session)</span>
+          <span id="hud-session" class="value mono"></span>
+        </div>
+        <div class="hud-block">
+          <span class="label">blocks (lifetime)</span>
+          <span id="hud-lifetime" class="value mono"></span>
+        </div>
+        <div class="hud-block">
+          <span class="label">auto miner</span>
+          <span id="hud-auto" class="sub mono"></span>
+        </div>
+        <button id="enter-mine" class="btn btn--mine">enter mine</button>
+        <span class="label hud-section-label">quick actions</span>
+        <div class="hud-actions">
+          <button class="btn" data-panel="blacksmith">forge</button>
+          <button class="btn" data-panel="gear">gear</button>
+          <button class="btn" data-panel="inventory">inventory</button>
+          <button class="btn" data-panel="loadout">loadout</button>
+          <button class="btn" data-panel="layers">layers</button>
+          <button class="btn" data-panel="autoMiner">auto miner</button>
+        </div>
+      </section>
+      <section class="menu-workbench" aria-labelledby="workshop-title">
+        <div class="dialog-head">
+          <div>
+            <span class="label">Natura operations</span>
+            <h2 id="workshop-title"></h2>
+          </div>
+        </div>
+        <div id="workshop-content" class="workshop-content"></div>
+      </section>
+    </main>
+  </section>
+
+  <section id="mine-scene" class="mine-scene" hidden aria-label="Active mine">
+    <section class="mine-wrap">
+      <div class="mine-stage-head">
+        <div><span class="label">active quarry</span><strong id="stage-layer"></strong></div>
+        <div class="stage-tool"><span id="stage-pickaxe"></span><small id="stage-pattern"></small></div>
+        <button id="exit-mine" class="btn btn--ghost mine-exit">menu</button>
+      </div>
+      <div class="mine-canvas-shell">
+        <canvas id="mine-canvas"></canvas>
+        <div id="toast-feed" class="toast-feed"></div>
+      </div>
+    </section>
+  </section>
+</div>
+
+<div id="scene-loader" class="scene-loader" aria-live="polite" aria-hidden="true" hidden>
+  <div class="scene-loader__content">
+    <span class="label">preparing descent</span>
+    <strong>Loading quarry</strong>
+    <p id="scene-tip"></p>
+    <span class="scene-loader__meter"><i></i></span>
+  </div>
+</div>
+
+<dialog id="atlas-dialog" class="atlas-dialog" aria-labelledby="ore-log-layer">
+  <div class="dialog-head atlas-dialog-head">
+    <div>
+      <span class="label">Natura index</span>
+      <h2 id="ore-log-layer">ore log</h2>
+      <span id="ore-log-depth" class="sub mono"></span>
+    </div>
+    <div class="atlas-dialog-actions">
+      <div class="atlas-nav">
+        <button id="ore-log-prev" class="icon-btn" aria-label="View previous layer">&larr;</button>
+        <span id="ore-log-progress" class="sub mono"></span>
+        <button id="ore-log-next" class="icon-btn" aria-label="View next layer">&rarr;</button>
+      </div>
+      <button id="atlas-close" class="icon-btn" aria-label="Close index">x</button>
+    </div>
+  </div>
+  <div id="ore-log" class="ore-log"></div>
+</dialog>
+
+<script type="module" src="src/main.js?v=20260827-13"></script>
+</body>
+</html>
